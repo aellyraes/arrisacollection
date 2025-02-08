@@ -1,0 +1,507 @@
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arrisa Collection</title>
+    <link rel="icon" type="images/png" href="images/logo.png">
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300&family=Great+Vibes&family=Playfair+Display:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+        body {
+            font-family: 'Playfair Display', serif;
+            margin: 0;
+            padding: 0;
+            background-color: #ffffff;
+            color: #f7f3e9;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color:hsla(49, 100%, 93%, 0.605);;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        .dropdown {
+            position: relative;
+            display: flex;
+            align-items: center;
+            width: 100%;
+            justify-content: space-between; /* Ensures space between the text and logo */
+        }
+
+        .dropdown > a {
+            font-family: 'Great Vibes', cursive;
+            color: #2826269f;
+            font-size: 24px;
+            font-weight: 800;
+            text-decoration: none;
+            padding: 10px 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        .dropdown > a img {
+            height: 30px;
+            margin-left: 15px;
+        }
+
+        .dropdown > a i {
+            font-size: 24px;
+            margin-right: 10px;
+        }
+
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            background-color: #333;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+            border-radius: 5px;
+            margin-top: 5px;
+            top: 40px; 
+        }
+
+        .dropdown-menu a {
+            color: #f7f3e9;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            font-size: 18px;
+            transition: background-color 0.3s ease;
+        }
+
+        .dropdown-menu a:hover {
+            background-color: #2e3d75;;
+        }
+
+        .dropdown:hover .dropdown-menu {
+            display: block;
+        }
+
+        section {
+            position: relative;
+            text-align: center;
+            padding: 60px 30px;
+            color: #f7f3e9;
+        }
+
+        #background-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+
+        #home {
+            position: relative; /* Ensures the text is positioned on top of the video */
+            height: 100vh; /* Full viewport height */
+            overflow: hidden; /* Ensures no scrolling happens due to the video */
+        }
+
+        .text-container {
+            position: relative; /* Keeps the text on top of the video */
+            color: #fff;
+            text-align: center;
+            z-index: 1;
+            padding: 20px;
+        }
+
+        .fade-in-box {
+            margin-top: 20px;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.8); /* Semi-transparent white background */
+            border-radius: 8px;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        #home {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            flex-direction: column;
+            z-index: 1;
+            color: #fff;
+        }
+
+        .text-container h1 {
+            font-size: 3rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+            margin-bottom: 20px;
+        }
+
+        .text-container .btn-location, 
+        .text-container .btn-check-menu {
+            display: inline-block;
+            background-color: #b40072;
+            color: white;
+            text-decoration: none;
+            padding: 15px 25px;
+            font-size: 1.2rem;
+            border-radius: 30px;
+            margin: 10px;
+            transition: background-color 0.3s ease;
+        }
+
+        .text-container .btn-location:hover, 
+        .text-container .btn-check-menu:hover {
+            background-color: #b40072;
+        }
+
+        .fade-in-box {
+            margin-top: 20px;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.8);
+            color: #000;
+            font-size: 1.1rem;
+            border-radius: 10px;
+            animation: fade-in 2s;
+        }
+
+        @keyframes fade-in {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Gallery Section */
+        .gallery {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            padding: 10px;
+            background-color: #f7f3e9;
+        }
+
+        .gallery div {
+            margin: 15px;
+            text-align: center;
+        }
+
+        .gallery img {
+            width: 300px;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        .gallery p {
+            margin-top: 10px;
+            font-size: 1rem;
+            color: #333;
+        }
+
+       /* Highlight Section */
+.highlight-boxes {
+    display: flex;
+    justify-content: space-around;
+    padding: 40px 20px;
+    background: #ffffff;
+}
+
+.highlight-box {
+    text-align: center;
+    width: 30%;
+    border: 1px solid #e0e0e0;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #fff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+    cursor: pointer; /* Add pointer cursor to indicate it's clickable */
+}
+
+.highlight-box:hover {
+    transform: scale(1.05);
+}
+
+.highlight-box .image-box {
+    width: 100%;
+    height: 150px;
+    background: #ffeaf7;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    overflow: hidden; /* Ensure the image doesn't overflow its container */
+}
+
+.highlight-box .image-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensure the image covers the entire area of the box */
+    transition: transform 0.3s ease; /* Add transition for smooth scaling */
+    border-radius: 8px;
+}
+
+/* Optional: Add hover effect to the image */
+.highlight-box:hover .image-box img {
+    transform: scale(1.1); /* Enlarge the image when the highlight box is hovered */
+}
+
+.highlight-box h2, .highlight-box p {
+    color: #000; /* Set text color to black */
+    font-weight: bold; /* Optional: make text bold for better emphasis */
+}
+
+.highlight-button {
+    background-color: #b40072;
+    color: #f7f3e9;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.highlight-button:hover {
+    background-color: #b40072;
+}
+
+
+/* Footer */
+footer {
+            background-color: #2e3d75;
+            color: rgb(255, 251, 251);
+            text-align: center;
+            padding: 20px;
+            position: relative;
+            margin-top: 0; 
+        }
+        
+        .footer-icons a {
+            margin: 0 10px;
+            color: rgb(255, 255, 255);
+            text-decoration: none;
+            font-size: 24px;
+        }
+
+        .footer-icons a:hover {
+            color: #ffffff;
+        }
+
+        .date-time {
+            margin-top: 10px;
+            font-size: 14px;
+        }
+
+        .gallery {
+    overflow: hidden;
+    white-space: nowrap;
+    position: relative;
+}
+
+.scrolling-wrapper {
+    display: flex;
+    animation: scroll 100s linear infinite;
+    background-color: #ffffff;
+}
+
+.card {
+    min-width: 200px;
+    margin: 10px;
+    text-align: center;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card img {
+    width: 100%;
+    height: 200px; /* Set a fixed height for all images */
+    object-fit: cover; /* Ensures images maintain aspect ratio and fill the area */
+    border-radius: 8px 8px 0 0;
+}
+
+.card p {
+    padding: 10px;
+    font-size: 14px;
+    color: #000;
+}
+
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="dropdown">
+            <a href="#">
+                <i class="fa fa-bars"></i>
+                Arrisa Collection
+                <img src="images/logo.png" alt=" Arrisa Collection"> 
+            </a>
+            <div class="dropdown-menu">
+                <a href="index.html">Home</a>
+                <a href="about.html">About Us</a>
+                <a href="collection.html">Collection</a>
+                <a href="contact.html">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+
+    <!-- Background Video -->
+    <video autoplay loop muted id="background-video">
+        <source src="videos/index.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+     
+     <!-- Home Section -->
+<section id="home" style="display: flex; align-items: center; padding: 50px; background: transparent; height: 100vh; box-sizing: border-box; overflow: hidden;">
+    <div class="text-container" style="text-align: right; margin-left: auto; padding-right: 50px; max-width: 50%; opacity: 0; transform: translateY(30px); animation: fadeIn 1.5s ease-out forwards;">
+        <!-- Big Title -->
+        <h1 style="font-size: 100px; font-weight: 900; color: #494747; text-shadow: 2px 2px 8px rgba(51, 50, 50, 0.2); margin: 0; font-family: 'Great Vibes', cursive;">
+            Arrisa Collection
+        </h1>
+        <h1 style="font-size: 50px; font-weight: 800; color: #000000; text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2); margin: 0;">
+            Welcome to Arrisa's Collection
+        </h1>
+        <!-- Description -->
+        <p style="font-size: 18px; color: #000000; margin: 10px 0 20px 0; line-height: 1.5;">
+            Handmade Jewelry, Crafted Locally in Malaysia with Love and Elegance
+        </p>
+        <!-- CTA Buttons -->
+        <div style="margin-top: 20px;">
+            <a href="collection.html" class="btn-location" style="text-decoration: none; color: rgb(0, 0, 0); background-color: #ffb8e4; padding: 10px 20px; border-radius: 5px; font-size: 16px; margin-right: 10px;">
+                Check our catalogue
+            </a>
+            <a href="collection.html" class="btn-check-menu" style="text-decoration: none; color: rgb(0, 0, 0); background-color: #ffb8e4; padding: 10px 20px; border-radius: 5px; font-size: 16px;">
+                Order here 
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- CSS for Fade-in Animation -->
+<style>
+    @keyframes fadeIn {
+        0% {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        100% {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+</style> 
+    
+ 
+<div class="scrolling-wrapper">
+    <div class="card"><img src="images/Necklace.jpeg" alt="Food 1"><p>Necklace</p></div>
+    <div class="card"><img src="images/Earrings.jpeg" alt="Food 2"><p>Earrings</p></div>
+    <div class="card"><img src="images/Bracelet.jpeg" alt="Interior"><p>Bracelet</p></div>
+    <div class="card"><img src="images/Keychain.jpeg" alt="Happy Customers"><p>Keychain</p></div>
+    <div class="card"><img src="images/Bookmark.jpeg" alt="Food 1"><p>Bookmarks</p></div>
+    <div class="card"><img src="images/Necklace.jpeg" alt="Food 1"><p>Necklace</p></div>
+    <div class="card"><img src="images/Earrings.jpeg" alt="Food 2"><p>Earrings</p></div>
+</div>
+</section>
+    
+    <div class="highlight-boxes">
+        <div class="highlight-box">
+            <div class="image-box">
+                <img src="images/t1.jpg" alt="Special Offers">
+            </div>
+            <h2>Secure Your
+                Sparkle Today</h2>
+            <button onclick="window.location.href='contact.html'" class="highlight-button">Book Now</button>
+        </div>
+        
+        <div class="highlight-box">
+            <div class="image-box">
+                <img src="images/t2.jpg" alt="New Arrivals">
+            </div>
+            <h2>Discover the Art
+                of Elegance</h2>
+            <button onclick="window.location.href='collection.html'" class="highlight-button">Discover New Arrivals</button>
+        </div>
+        
+        <div class="highlight-box">
+            <div class="image-box">
+                <img src="images/t3.jpg" alt="Our Story">
+            </div>
+            <h2>Discover the
+                Story Behind the
+                Sparkle</h2>
+            <button onclick="window.location.href='about.html'" class="highlight-button">Read Our Story</button>
+        </div>
+    </div>
+    
+
+    <!-- Footer -->
+     <footer>
+        <div class="footer-icons">
+            <a href="https://www.instagram.com/arrisacollection?igsh=MW4xMjcwNHFkM2lidQ==" target="_blank" aria-label="Instagram">
+                <i class="fab fa-instagram"></i>
+            </a>
+            <a href="tel:01170160020" aria-label="Phone">
+                <i class="fas fa-phone"></i>
+            </a>
+        </div>
+        <div class="date-time" id="dateTime"></div>
+        <p>&copy; 2025 Arrisa Collection. All rights reserved.</p>
+    </footer>
+</section>
+
+    <script>
+        // Toggle the mobile menu
+        function toggleMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('active');
+        }
+    </script>
+
+<script>
+    const updateDateTime = () => {
+        const now = new Date();
+        const options = { year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit' };
+        document.getElementById("dateTime").textContent = now.toLocaleDateString("en-US", options);
+    };
+
+    setInterval(updateDateTime, 1000);
+    
+    const scrollingWrapper = document.querySelector('.scrolling-wrapper');
+
+// Clone gallery items for smooth continuous scrolling
+const galleryItems = Array.from(scrollingWrapper.children);
+galleryItems.forEach(item => scrollingWrapper.appendChild(item.cloneNode(true)));
+
+</script>
+
+    
+</body>
+</html>

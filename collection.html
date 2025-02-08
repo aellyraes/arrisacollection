@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arrisa Collection</title>
+    <link rel="icon" type="about us" href="images/logo.png">
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300&family=Great+Vibes&family=Playfair+Display:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+
+       body {
+        font-family: 'Playfair Display', serif;
+    margin: 0;
+    padding: 0;
+    background: url('images/background.png') no-repeat center center fixed;
+    background-size: cover;
+       }
+
+       nav {
+        display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color:hsla(49, 100%, 93%, 0.605);;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        .dropdown {
+            position: relative;
+            display: flex;
+            align-items: center;
+            width: 100%;
+            justify-content: space-between; /* Ensures space between the text and logo */
+        }
+
+        .dropdown > a {
+            font-family: 'Great Vibes', cursive;
+            color: #2826269f;
+            font-size: 24px;
+            font-weight: 800;
+            text-decoration: none;
+            padding: 10px 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        .dropdown > a img {
+            height: 30px;
+            margin-left: 15px;
+        }
+
+        .dropdown > a i {
+            font-size: 24px;
+            margin-right: 10px;
+        }
+
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            background-color: #333;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+            border-radius: 5px;
+            margin-top: 5px;
+            top: 40px; 
+        }
+
+        .dropdown-menu a {
+            color: #f7f3e9;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            font-size: 18px;
+            transition: background-color 0.3s ease;
+        }
+
+        .dropdown-menu a:hover {
+            background-color: #2e3d75;
+        }
+
+        .dropdown:hover .dropdown-menu {
+            display: block;
+        }
+
+        section {
+            text-align: center;
+            padding: 60px 30px;
+            color: #f7f3e9;
+        }
+
+       #menu-images {
+    padding: 40px 20px;
+    text-align: center;
+}
+
+#menu-images h2 {
+    font-family: 'Great Vibes', cursive;
+    font-size: 36px;
+    margin-bottom: 30px;
+    color: #333;
+}
+
+.menu-category {
+    margin-bottom: 40px;
+}
+
+.menu-category h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    margin-bottom: 20px;
+    color: #8b0000;
+}
+
+.menu-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.menu-item {
+    flex: 1 1 200px;
+    max-width: 300px;
+    text-align: center;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.menu-item img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.menu-item p {
+    padding: 10px;
+    font-size: 16px;
+    color: #555;
+}
+
+.menu-price {
+    display: inline-block;
+    padding: 8px 15px;
+    margin: 10px 0;
+    font-size: 18px;
+    font-weight: bold;
+    color: #f9f1c7;
+    background-color: #2e3d75;
+    ;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+
+footer {
+            background-color:  #2e3d75;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            position: relative;
+            margin-top: 0; 
+        }
+        
+        .footer-icons a {
+            margin: 0 10px;
+            color: white;
+            text-decoration: none;
+            font-size: 24px;
+        }
+
+        .footer-icons a:hover {
+            color: #ffd700;
+        }
+
+        .date-time {
+            margin-top: 10px;
+            font-size: 14px;
+        }
+
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.modal-content {
+    position: relative;
+    background-color: #fff;
+    margin: 10% auto;
+    padding: 20px;
+    border-radius: 8px;
+    width: 80%;
+    max-width: 500px;
+    text-align: center;
+}
+
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close:hover, .close:focus {
+    color: #000;
+    text-decoration: none;
+}
+
+.modal img {
+    max-width: 100%;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="dropdown">
+            <a href="#">
+                <i class="fa fa-bars"></i>
+                Arrisa Collection
+                <img src="images/logo.png" alt="Japangi Logo"> 
+            </a>
+            <div class="dropdown-menu">
+                <a href="index.html">Home</a>
+                <a href="about.html">About Us</a>
+                <a href="collection.html">Collection</a>
+                <a href="contact.html">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    </section>
+
+    <section id="menu-images" class="fade-in">
+        <h2>Our Collections</h2>
+    
+        
+        <div class="menu-category">
+            <h3>Bookmarks</h3>
+            <div class="menu-gallery">
+                <div class="menu-item">
+                    <img src="images/b1.jpeg" alt="ACC">
+                    <p>Bookmark</p>
+                    <span class="menu-price">RM 25.00</span>   
+                </div>
+                
+                <div class="menu-item">
+                    <img src="images/b2.jpeg" alt="ACC">
+                    <p>Bookmark</p>
+                    <span class="menu-price">RM 25.00</span>  
+                </div>
+                
+                <div class="menu-item">
+                    <img src="images/b3.jpeg" alt="ACC">
+                    <p>Bookmark</p>
+                    <span class="menu-price">RM 25.00</span>   
+                </div>
+                
+                <div class="menu-item">
+                    <img src="images/b4.jpeg" alt="ACC">
+                    <p>Bookmark</p>
+                    <span class="menu-price">RM 25.00</span>     
+                </div>
+        </div>
+        
+        <div class="menu-category">
+            <h3>Necklace</h3>
+            <div class="menu-gallery">
+                <div class="menu-item">
+                    <img src="images/n1.jpeg" alt="">
+                    <p>Necklace</p>
+                    <span class="menu-price">RM 65.00</span>
+                </div>
+        
+                <div class="menu-item">
+                    <img src="images/n2.jpeg." alt="">
+                    <p>Necklace</p>
+                    <span class="menu-price">RM 65.00</span>
+                </div>
+        
+                <div class="menu-item">
+                    <img src="images/n3.jpeg" alt="">
+                    <p>Necklace</p>
+                    <span class="menu-price">RM 65.00</span>
+                </div>
+        
+                <div class="menu-item">
+                    <img src="images/n4.jpeg" alt="">
+                    <p>Necklace</p>
+                    <span class="menu-price">RM 65.00</span>
+                </div>
+        
+                <div class="menu-item">
+                    <img src="images/n5.jpeg" alt="">
+                    <p>Necklace</p>
+                    <span class="menu-price">RM 65.00</span>
+                </div>
+            </div>
+        </div>
+        
+
+        <div class="menu-category">
+            <h3>Bracelet</h3>
+            <div class="menu-gallery">
+                <div class="menu-item">
+                    <img src="images/e1.jpeg" alt="">
+                    <p>Bracelet</p>
+                    <span class="menu-price">RM 40.00</span>
+                </div>
+                <div class="menu-item">
+                    <img src="images/e2.jpeg" alt="">
+                    <p>Bracelet</p>
+                    <span class="menu-price">RM 40.00</span>
+                </div>
+                <div class="menu-item">
+                    <img src="images/e3.jpeg" alt="">
+                    <p>Bracelet</p>
+                    <span class="menu-price">RM 40.00</span>
+                </div>
+                <div class="menu-item">
+                    <img src="images/e4.jpeg" alt="">
+                    <p>Bracelet</p>
+                    <span class="menu-price">RM 40.00</span>
+                </div>
+                <div class="menu-item">
+                    <img src="images/e5.jpeg" alt="">
+                    <p>Bracelet</p>
+                    <span class="menu-price">RM 40.00</span>
+                </div>
+                <div class="menu-item">
+                    <img src="images/e6.jpeg" alt="">
+                    <p>Bracelet</p>
+                    <span class="menu-price">RM 40.00</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="menu-category">
+            <h3>Earrings</h3>
+            <div class="menu-gallery">
+                <div class="menu-item">
+                    <img src="images/r1.jpeg" alt="">
+                    <p>Earring</p>
+                    <span class="menu-price">RM 11.00</span>
+                </div>
+                <div class="menu-item">
+                    <img src="images/r2.jpeg" alt="">
+                    <p>Earring</p>
+                    <span class="menu-price">RM 11.00</span>
+                </div>
+                <div class="menu-item">
+                    <img src="images/r3.jpeg" alt="">
+                    <p>Earring</p>
+                    <span class="menu-price">RM 11.00</span>
+                </div>
+                <div class="menu-item">
+                    <img src="images/r4.jpeg" alt="">
+                    <p>Earring</p>
+                    <span class="menu-price">RM 11.00</span>
+                </div>
+                <div class="menu-item">
+                    <img src="images/r5.jpeg" alt="">
+                    <p>Earring</p>
+                    <span class="menu-price">RM 11.00</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="menu-category">
+            <h3>Keychain</h3>
+            <div class="menu-gallery">
+                <div class="menu-item">
+                    <img src="images/k1.jpeg" alt="">
+                    <p>Keychain</p>
+                    <span class="menu-price">RM 35.00</span>
+                </div>
+                <div class="menu-item">
+                    <img src="images/k2.jpeg" alt="">
+                    <p>Keychain</p>
+                    <span class="menu-price">RM 35.00</span>>
+                </div>
+                <div class="menu-item">
+                    <img src="images/k3.jpeg" alt="">
+                    <p>Keychain</p>
+                    <span class="menu-price">RM 35.00</span>
+                </div>
+                <div class="menu-item">
+                    <img src="images/k4.jpeg" alt="">
+                    <p>Keychain</p>
+                    <span class="menu-price">RM 35.00</span>
+                </div>
+            </div>
+        </div>
+        
+
+        <div class="menu-category">
+            <h3>Maemorri Set</h3>
+            <div class="menu-gallery">
+                <div class="menu-item">
+                    <img src="images/c1.jpeg" alt="">
+                    <p>Best Girlhood Dream</p>
+                    <span class="menu-price">RM 150.00</span>
+                </div>
+                <div class="menu-item">
+                    <img src="images/c2.jpeg" alt="">
+                    <p>Curious Sweetheart</p>
+                    <span class="menu-price">RM 150.00</span>
+                </div>
+                <div class="menu-item">
+                    <img src="images/c3.jpeg" alt="">
+                    <p>Full of Spirit</p>
+                    <span class="menu-price">RM 150.00</span>
+                </div>   
+                <div class="menu-item">
+                    <img src="images/c4.jpeg" alt="">
+                    <p>Paris</p>
+                    <span class="menu-price">RM 150.00</span>
+                </div>    
+                <div class="menu-item">
+                    <img src="images/c5.jpeg" alt="">
+                    <p>Protector of Wanderer</p>
+                    <span class="menu-price">RM 150.00</span>
+                </div>               
+            </div>
+        </div>
+
+    </section>
+    
+    <footer>
+        <div class="footer-icons">
+            <a href="https://www.instagram.com/arrisacollection?igsh=MW4xMjcwNHFkM2lidQ==" target="_blank" aria-label="Instagram">
+                <i class="fab fa-instagram"></i>
+            </a>
+            <a href="tel:01170160020" aria-label="Phone">
+                <i class="fas fa-phone"></i>
+            </a>
+        </div>
+        <div class="date-time" id="dateTime"></div>
+        <p>&copy; 2025 Arrisa Collection. All rights reserved.</p>
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const fadeElements = document.querySelectorAll(".fade-in");
+
+            const handleScroll = () => {
+                fadeElements.forEach(element => {
+                    const rect = element.getBoundingClientRect();
+                    const isVisible = rect.top < window.innerHeight && rect.bottom >= 0;
+
+                    if (isVisible) {
+                        element.classList.add("visible");
+                    }
+                });
+            };
+
+            window.addEventListener("scroll", handleScroll);
+            handleScroll(); 
+        });
+
+        const updateDateTime = () => {
+            const now = new Date();
+            const options = { year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit' };
+            document.getElementById("dateTime").textContent = now.toLocaleDateString("en-US", options);
+        };
+
+        setInterval(updateDateTime, 1000);
+
+    </script>
+
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll(".slides");
+
+        function changeSlide(direction) {
+            slides[currentSlide].classList.remove("active-slide");
+            currentSlide = (currentSlide + direction + slides.length) % slides.length;
+            slides[currentSlide].classList.add("active-slide");
+        }
+
+      
+        setInterval(() => changeSlide(1), 5000);
+    </script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const modal = document.getElementById('menuModal');
+        const modalImage = document.getElementById('modalImage');
+        const modalText = document.getElementById('modalText');
+        const closeButton = document.querySelector('.close');
+
+        
+        document.querySelectorAll('.menu-item img').forEach(item => {
+            item.addEventListener('click', () => {
+                modal.style.display = 'block';
+                modalImage.src = item.src;
+                modalText.textContent = item.nextElementSibling.textContent;
+            });
+        });
+
+      
+        closeButton.addEventListener('click', () => {
+            modal.style.display = 'none';
+        });
+
+        
+        window.addEventListener('click', event => {
+            if (event.target === modal) {
+                modal.style.display = 'none';
+            }
+        });
+    });
+</script>
+
+<div id="menuModal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <img id="modalImage" src="" alt="">
+        <p id="modalText"></p>
+    </div>
+</div>
+
+
+</body>
+</html>
